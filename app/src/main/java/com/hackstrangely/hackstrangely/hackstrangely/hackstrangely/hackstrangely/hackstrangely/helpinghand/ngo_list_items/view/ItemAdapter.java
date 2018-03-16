@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.R;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.helper.SharedPrefs;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_list_items.model.ItemData;
-import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_sub_categories.view.SubProductsFragment;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,16 +55,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
         final ItemData itemData1 = itemDataList.get(position);
         holder.itemName.setText(itemData1.getName());
         Glide.with(context).load(itemData1.getImage()).into(holder.itemImage);
-        holder.itemLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               sharedPrefs.setItem_id(itemData1.getId());
-                ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container_body, new SubProductsFragment())
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
+//        holder.itemLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//               sharedPrefs.setItem_id(itemData1.getId());
+//                ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.container_body, new SubCategoriesFragment())
+//                        .addToBackStack(null)
+//                        .commit();
+//            }
+//        });
 
     }
 

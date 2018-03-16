@@ -14,9 +14,12 @@ public class SharedPrefs {
     private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
     private static final String KEY_ITEM_ID = "item_id";
     private static final String KEY_IS_OTPLOGGEDIN = "isOtpLoggedIn";
+    private static final String KEY_NAME = "name";
+    private static final String KEY_PASSWORD = "password";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_MOBILE = "mobile";
     private static final String KEY_EMAIL = "email";
+    private static final String KEY_AADHAR = "your aadhar";
     private static final String KEY_PHOTO_URL = "photoUrl";
     private static final String KEY_USER_ID = "userId";
     private static final String KEY_LOGIN_TYPE = "loginType";
@@ -86,46 +89,6 @@ public class SharedPrefs {
         return pref.getString(KEY_FCM, null);
     }
 
-    public void setUsername(String username) {
-
-        editor.putString(KEY_USERNAME, username);
-        editor.commit();
-
-
-    }
-
-    public void setEmailId(String emailId) {
-
-        editor.putString(KEY_EMAIL, emailId);
-        editor.commit();
-
-    }
-
-    public String getUserId() {
-
-        return pref.getString(KEY_USER_ID, "Not Available");
-
-    }
-
-    public void setUserId(String userId) {
-
-        editor.putString(KEY_USER_ID, userId);
-        editor.commit();
-
-    }
-
-    public String getPhotoUrl() {
-
-        return pref.getString(KEY_PHOTO_URL, "User name not available");
-    }
-
-    public void setPhotoUrl(String photoUrl) {
-
-        editor.putString(KEY_PHOTO_URL, photoUrl);
-        editor.commit();
-
-    }
-
     public void setAccessToken(String accessToken) {
         editor.putString(KEY_ACCESS_TOKEN, accessToken);
         editor.commit();
@@ -135,12 +98,6 @@ public class SharedPrefs {
 
         return pref.getString(KEY_ACCESS_TOKEN, null);
     }
-
-    public String getEmail() {
-
-        return pref.getString(KEY_EMAIL, "Your Email Address");
-    }
-
 
     public String getMobile() {
 
@@ -155,4 +112,47 @@ public class SharedPrefs {
 
     }
 
+    public void setPassword(String password){
+
+        editor.putString(KEY_PASSWORD,password);
+        editor.commit();
+    }
+
+    public String getPassword(){
+        return pref.getString(KEY_PASSWORD,"Your Password");
+    }
+
+    public void setName(String name){
+        editor.putString(KEY_NAME,name);
+        editor.commit();
+    }
+
+    public String getName(){
+        return pref.getString(KEY_NAME,"Your name");
+    }
+
+    public void setUserName(String user){
+        editor.putString(KEY_USERNAME,user);
+        editor.commit();
+    }
+
+    public String getUserName(){
+        return pref.getString(KEY_USERNAME,"your username");
+    }
+
+    public void setEmail(String email){
+        editor.putString(KEY_EMAIL,email);
+        editor.commit();
+    }
+    public String getEmail(){
+        return pref.getString(KEY_EMAIL,"your email");
+    }
+
+    public void setAadhar(String aadhar){
+        editor.putString(KEY_AADHAR,aadhar);
+        editor.commit();
+    }
+    public String getAadhar(){
+        return pref.getString(KEY_AADHAR,"your aadhar");
+    }
 }
