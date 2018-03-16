@@ -17,8 +17,12 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.R;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.helper.SharedPrefs;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.register.model.RegisterDataResponse;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.register.presenter.RegisterPresenter;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.register.presenter.RegisterPresenterImpl;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.register.provider.RetrofitRegisterHelper;
 import com.valdesekamdem.library.mdtoast.MDToast;
 
 import java.util.regex.Matcher;
@@ -29,7 +33,7 @@ import butterknife.ButterKnife;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterView{
 
-    public String Name,Contact,Password,RePassword,BloodGroup,Username,Email;
+    public String Name,Contact,Password,RePassword,Username, Aadhar;
 
     private SharedPrefs sharedPrefs;
 
@@ -43,8 +47,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
     EditText password;
     @BindView(R.id.retype_password)
     EditText reTypePassword;
-    @BindView(R.id.blood_group)
-    EditText bloodGroup;
     @BindView(R.id.register)
     Button register;
     @BindView(R.id.progressBar_register)
@@ -59,8 +61,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
     View signUpUnderLine;
     @BindView(R.id.user_name)
     EditText userName;
-    @BindView(R.id.email)
-    EditText email;
+    @BindView(R.id.aadhar_no)
+    EditText aadhar;
     @BindView(R.id.input_layout_password_register)
     TextInputLayout inputLayoutPassword;
     @BindView(R.id.input_layout_username_register)
@@ -68,11 +70,9 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
     @BindView(R.id.input_layout_name_register)
     TextInputLayout inputLayoutName;
     @BindView(R.id.input_layout_email_register)
-    TextInputLayout inputLayoutEmail;
+    TextInputLayout inputLayoutAadhar;
     @BindView(R.id.input_layout_contact_register)
     TextInputLayout inputLayoutContact;
-    @BindView(R.id.input_layout_blood_register)
-    TextInputLayout inputLayoutBlood;
     @BindView(R.id.input_layout_repassword_register)
     TextInputLayout inputLayoutRepassword;
 
@@ -110,9 +110,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
         contactNumber.addTextChangedListener(new MyTextWatcher(contactNumber));
         password.addTextChangedListener(new MyTextWatcher(password));
         reTypePassword.addTextChangedListener(new MyTextWatcher(reTypePassword));
-        bloodGroup.addTextChangedListener(new MyTextWatcher(bloodGroup));
         userName.addTextChangedListener(new MyTextWatcher(userName));
-        email.addTextChangedListener(new MyTextWatcher(email));
+        aadhar.addTextChangedListener(new MyTextWatcher(aadhar));
     }
     private void registerClick(){
         showProgressBar(true)
@@ -121,11 +120,10 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
         Contact=contactNumber.getText().toString().trim();
         Password=password.getText().toString().trim();
         RePassword=reTypePassword.getText().toString().trim();
-        BloodGroup=bloodGroup.getText().toString().trim();
         Username=userName.getText().toString().trim();
-        Email=email.getText().toString().trim();
+        Aadhar = aadhar.getText().toString().trim();
 
-        if(!validateName() || !validateContact() || !validatePassword() || !validateRePassword() || !validateBloodGroup() || !validateUsername() || !validateEmail()){
+        if(!validateName() || !validateContact() || !validatePassword() || !validateRePassword() || !validateUsername() || !validateAadhar()){
             showProgressBar(false);
             MDToast mdToast = MDToast.makeText(this, "One or more fields empty", MDToast.LENGTH_LONG, MDToast.TYPE_WARNING);
             mdToast.show();
@@ -138,13 +136,13 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
             showProgressBar(false);
             showError("The passwords you entered does not match!");
         }
-        else if(emailInvalid(Email)){
+        else if(emailInvalid(Aadhar)){
             showProgressBar(false);
-            showError("Invalid Email ID!");
+            showError("Invalid Aadhar Number!");
         }
         else{
             registerPresenter = new RegisterPresenterImpl(new RetrofitRegisterHelper(),this);
-            registerPresenter.getRegisterData(Name,Contact,Password,BloodGroup,Username,Email);
+            registerPresenter.getRegisterData(Name,Contact,Password,Username, Aadhar);
         }
     }
     public void goToSignIn(){
@@ -176,10 +174,9 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
         startActivity(i);
         sharedPrefs.setMobile(Contact);
         sharedPrefs.setName(Name);
-        sharedPrefs.setBloodGroup(BloodGroup);
         sharedPrefs.setPassword(Password);
         sharedPrefs.setUserName(Username);
-        sharedPrefs.setEmail(Email);
+        sharedPrefs.setAadhar(Aadhar);
         sharedPrefs.setAccessToken(registerDataResponse.getToken());
         finish();
 
@@ -247,18 +244,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
         }
 
     }
-    public boolean validateBloodGroup(){
-        if(bloodGroup.getText().toString().trim().isEmpty())
-        {
-            inputLayoutBlood.setError(getString(R.string.err_msg_empty));
-            requestFocus(bloodGroup);
-            return false;
-        }
-        else{
-            inputLayoutUsername.setErrorEnabled(false);
-            return true;
-        }
-    }
     public boolean validateUsername(){
         if(userName.getText().toString().trim().isEmpty())
         {
@@ -272,16 +257,16 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
         }
 
     }
-    public boolean validateEmail(){
+    public boolean validateAadhar(){
 
-        if(email.getText().toString().trim().isEmpty())
+        if(aadhar.getText().toString().trim().isEmpty())
         {
-            inputLayoutEmail.setError(getString(R.string.err_msg_empty));
-            requestFocus(email);
+            inputLayoutAadhar.setError(getString(R.string.err_msg_empty));
+            requestFocus(aadhar);
             return false;
         }
         else{
-            inputLayoutEmail.setErrorEnabled(false);
+            inputLayoutAadhar.setErrorEnabled(false);
             return true;
         }
     }
@@ -316,14 +301,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
                 case R.id.name:
                     validateName();
                     break;
-                case R.id.blood_group:
-                    validateBloodGroup();
-                    break;
                 case R.id.retype_password:
                     validateRePassword();
                     break;
-                case R.id.email:
-                    validateEmail();
+                case R.id.aadhar_no:
+                    validateAadhar();
                     break;
                 case R.id.contact:
                     validateContact();

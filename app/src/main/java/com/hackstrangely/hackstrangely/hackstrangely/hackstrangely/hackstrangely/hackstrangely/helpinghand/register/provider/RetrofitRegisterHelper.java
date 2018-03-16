@@ -1,9 +1,9 @@
 package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.register.provider;
 
-import com.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.vigyaan.helper.Urls;
-import com.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.vigyaan.register.RegisterCallback;
-import com.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.vigyaan.register.api.RequestRegister;
-import com.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.vigyaan.register.model.RegisterDataResponse;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.helper.Urls;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.register.RegisterCallback;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.register.api.RequestRegister;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.register.model.RegisterDataResponse;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitRegisterHelper implements RegisterBaseClassHelper{
     @Override
-    public void registerData(String name, String mobile, String password, String bloodGroup,String userName,String eMail,final RegisterCallback registerCallback) {
+    public void registerData(String name, String mobile, String password, String userName,String aadhar,final RegisterCallback registerCallback) {
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -30,7 +30,7 @@ public class RetrofitRegisterHelper implements RegisterBaseClassHelper{
 
         Retrofit retrofit= new Retrofit.Builder().baseUrl(Urls.BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create()).build();
         RequestRegister requestRegister = retrofit.create(RequestRegister.class);
-        Call<RegisterDataResponse> call= requestRegister.getJSON(name,mobile,password,bloodGroup,userName,eMail);
+        Call<RegisterDataResponse> call= requestRegister.getJSON(name,mobile,password,userName,aadhar);
         call.enqueue(new Callback<RegisterDataResponse>() {
             @Override
             public void onResponse(Call<RegisterDataResponse> call, Response<RegisterDataResponse> response) {

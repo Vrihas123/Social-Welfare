@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Helping Hand</string>
+
+    <string name="err_msg_empty">Field cannot be empty</string>
 </resources>

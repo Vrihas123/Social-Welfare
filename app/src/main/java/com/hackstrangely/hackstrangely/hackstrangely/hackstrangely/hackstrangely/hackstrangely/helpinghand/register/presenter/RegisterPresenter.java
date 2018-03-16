@@ -6,6 +6,6 @@ package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangel
 
 public interface RegisterPresenter {
 
-    void getRegisterData(String name, String mobile, String password, String bloodGroup, String userName, String email);
+    void getRegisterData(String name, String mobile, String password, String userName, String aadhar);
 
 }

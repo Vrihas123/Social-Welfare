@@ -1,9 +1,9 @@
 package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.register.presenter;
 
-import com.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.vigyaan.register.RegisterCallback;
-import com.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.vigyaan.register.model.RegisterDataResponse;
-import com.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.vigyaan.register.provider.RegisterBaseClassHelper;
-import com.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.teamcse.vigyaan.register.view.RegisterView;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.register.RegisterCallback;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.register.model.RegisterDataResponse;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.register.provider.RegisterBaseClassHelper;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.register.view.RegisterView;
 
 /**
  * Created by samveg on 28/9/17.
@@ -20,10 +20,10 @@ public class RegisterPresenterImpl implements RegisterPresenter{
     }
 
     @Override
-    public void getRegisterData(String name, String mobile, String password, String bloodGroup , String userName,String eMail) {
+    public void getRegisterData(String name, String mobile, String password, String userName,String aadhar) {
 
         registerView.showProgressBar(true);
-        registerBaseClassHelper.registerData(name, mobile, password, bloodGroup,userName,eMail, new RegisterCallback() {
+        registerBaseClassHelper.registerData(name, mobile, password, userName,aadhar, new RegisterCallback() {
             @Override
             public void onRegisterSuccess(RegisterDataResponse registerResponse) {
                 if(registerResponse.isSuccess()){

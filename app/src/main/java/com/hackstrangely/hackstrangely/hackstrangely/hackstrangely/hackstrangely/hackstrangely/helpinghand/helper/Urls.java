@@ -16,6 +16,7 @@ public class Urls {
     public static final String REQUEST_BQUIZ_DATA ="get_live_question";
     public static final String REQUEST_SUBMIT_ANSWER ="submit_answer_app";
     public static final String REQUEST_LOGIN ="create_user";
+    public static final String REQUEST_REGISTER ="";
     public static final String REQUEST_VERIFY="verify_otp";
     public static final String REQUEST_SPEAKERS ="get_speakers_list" ;
     public static final String REQUEST_CONTACTUS ="/submit_contact_us";
