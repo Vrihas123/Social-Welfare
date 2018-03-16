@@ -12,13 +12,13 @@ public class SharedPrefs {
     // Shared preferences file name
     private static final String PREF_NAME = "AndroidHiveLogin";
     private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
+    private static final String KEY_ITEM_ID = "item_id";
     private static final String KEY_IS_OTPLOGGEDIN = "isOtpLoggedIn";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_MOBILE = "mobile";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PHOTO_URL = "photoUrl";
     private static final String KEY_USER_ID = "userId";
-    private static final String FIRSTBLOG="isFirstBlog";
     private static final String KEY_LOGIN_TYPE = "loginType";
     private static final String KEY_FCM = "fcm";
     private static final String KEY_ACCESS_TOKEN = "access_token";
@@ -48,6 +48,18 @@ public class SharedPrefs {
         // commit changes
         editor.commit();
         Log.d(TAG, "User login session modified!");
+    }
+
+    public void setItem_id(int item_id) {
+
+        editor.putInt(KEY_ITEM_ID, item_id);
+        // commit changes
+        editor.commit();
+        Log.d(TAG, "Item id set!");
+    }
+
+    public int getItemId(){
+        return pref.getInt(KEY_ITEM_ID,0);
     }
     public void setOtpLogin(boolean isOtpLoggedIn){
         editor.putBoolean(KEY_IS_OTPLOGGEDIN, isOtpLoggedIn);
