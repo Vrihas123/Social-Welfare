@@ -1,7 +1,10 @@
 package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_list_items.view;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -81,8 +84,8 @@ public class ItemActivity extends AppCompatActivity
         }
 
     }
-
-    public void addFragment(Fragment fragment, String title) {
+*/
+    public void addFragment(android.support.v4.app.Fragment fragment, String title) {
         if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -92,7 +95,7 @@ public class ItemActivity extends AppCompatActivity
             getSupportActionBar().setTitle(title);
         }
 
-    }*/
+    }
 
     @Override
     public void setData(List<ItemData> itemDataList) {
