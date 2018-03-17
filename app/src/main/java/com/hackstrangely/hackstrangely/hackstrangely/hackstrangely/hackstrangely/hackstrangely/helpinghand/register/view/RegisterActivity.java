@@ -138,7 +138,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
             showProgressBar(false);
             showError("The passwords you entered does not match!");
         }
-        else if(emailInvalid(Aadhar)){
+        else if(Aadhar.length()!=12){
             showProgressBar(false);
             showError("Invalid Aadhar Number!");
         }
