@@ -1,14 +1,12 @@
-package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.sub_categories.provider;
+package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_sub_categories.provider;
 
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.helper.Urls;
-import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.sub_categories.api.RequestSubCategoryApi;
-import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.sub_categories.model.SubCategoryList;
-import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.sub_categories.view.OnSubCategoryRecieved;
-
-import java.util.List;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_sub_categories.api.RequestSubCategoryApi;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_sub_categories.model.SubCategoryList;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_sub_categories.view.OnSubCategoryRecieved;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -29,7 +27,7 @@ public class RetrofitSubCategoryProvider implements SubCategoryProvider{
     Call<SubCategoryList> call;
 
     @Override
-    public void requestSubCategoryData(String id,String access_token, final OnSubCategoryRecieved onSubCategoryRecieved) {
+    public void requestSubCategoryData(int id,String access_token, final OnSubCategoryRecieved onSubCategoryRecieved) {
 
         Gson gson = new GsonBuilder()
                 .setLenient()

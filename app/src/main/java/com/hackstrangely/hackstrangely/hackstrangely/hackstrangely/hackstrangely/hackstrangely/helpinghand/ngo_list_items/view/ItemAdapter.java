@@ -1,7 +1,6 @@
 package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_list_items.view;
 
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,7 @@ import com.bumptech.glide.Glide;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.R;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.helper.SharedPrefs;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_list_items.model.ItemData;
-import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.sub_categories.view.SubCategoryFragment;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_sub_categories.view.SubCategoryFragment;
 
 
 import java.util.ArrayList;
@@ -56,19 +55,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
         final ItemData itemData1 = itemDataList.get(position);
         holder.itemName.setText(itemData1.getName());
         Glide.with(context).load(itemData1.getImage()).into(holder.itemImage);
-//        holder.itemLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//               sharedPrefs.setItem_id(itemData1.getId());
-//                ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.container_body, new SubCategoriesFragment())
-//                        .addToBackStack(null)
-//                        .commit();
-//            }
-//        });
         holder.itemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sharedPrefs.setItem_id(itemData1.getId());
                 ((ItemActivity)context).addFragment(new SubCategoryFragment(),"NGO's");
             }
         });

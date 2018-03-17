@@ -13,6 +13,8 @@ public class SharedPrefs {
     private static final String PREF_NAME = "AndroidHiveLogin";
     private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
     private static final String KEY_ITEM_ID = "item_id";
+    private static final String KEY_NGO_ID = "ngo_id";
+    private static final String KEY_NGO_NAME = "ngo_name";
     private static final String KEY_IS_OTPLOGGEDIN = "isOtpLoggedIn";
     private static final String KEY_NAME = "name";
     private static final String KEY_PASSWORD = "password";
@@ -67,6 +69,31 @@ public class SharedPrefs {
     public int getItemId(){
         return pref.getInt(KEY_ITEM_ID,0);
     }
+
+    public void setNgo_id(int ngo_id) {
+
+        editor.putInt(KEY_ITEM_ID, ngo_id);
+        // commit changes
+        editor.commit();
+        Log.d(TAG, "Ngo id set!");
+    }
+
+    public int getNgoId(){
+        return pref.getInt(KEY_ITEM_ID,0);
+    }
+
+    public void setNgo_name(String ngo_name) {
+
+        editor.putString(KEY_NGO_NAME, ngo_name);
+        // commit changes
+        editor.commit();
+        Log.d(TAG, "Ngo id set!");
+    }
+
+    public String getNgoName(){
+        return pref.getString(KEY_NGO_NAME,"");
+    }
+
     public void setOtpLogin(boolean isOtpLoggedIn){
         editor.putBoolean(KEY_IS_OTPLOGGEDIN, isOtpLoggedIn);
         editor.commit();
