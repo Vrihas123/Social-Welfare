@@ -17,6 +17,6 @@ public interface RequestRegister {
 
     @FormUrlEncoded
     @POST(Urls.REQUEST_REGISTER)
-    Call<RegisterDataResponse> getJSON(@Field("name") String name, @Field("mobile_number") String mobile, @Field("password") String password, @Field("username") String userName, @Field("aadhar") String aadhar);
+    Call<RegisterDataResponse> getJSON(@Field("name") String name, @Field("mobile") String mobile, @Field("password") String password, @Field("username") String userName, @Field("aadhar") String aadhar);
 
 }
