@@ -18,19 +18,21 @@
         android:theme="@style/AppTheme">
         <activity android:name=".health_bot.view.HealthBotActivity" />
         <activity android:name=".login.view.LoginActivity" />
-        <activity android:name=".register.view.RegisterActivity" />
-        <activity android:name=".otp_verify.view.OtpActivity" />
-        <activity android:name=".ngo_list_items.view.ItemActivity" />
-        <activity android:name=".HomeActivity">
+        <activity android:name=".register.view.RegisterActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
-                <action android:name="com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.IBMPushNotification" />
-
-                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.IBMPushNotification"/>
+                <category  android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".otp_verify.view.OtpActivity" />
+        <activity android:name=".ngo_list_items.view.ItemActivity" />
+        <activity android:name=".HomeActivity">
+
         </activity>
         <activity android:name=".payment.view.PaymentActivity" />
         <activity
@@ -51,8 +53,22 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+        <receiver android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationDismissHandler">
+            <intent-filter>
+                <action android:name="Your_Android_Package_Name.Cancel_IBMPushNotification"/>
+            </intent-filter>
+        </receiver>
+
 
         <activity android:name=".payment_gateway.view.PaymentGatewayActivity"></activity>
+
+        <receiver android:name="com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.NotificationHandler">
+            <intent-filter>
+                <action android:name="Your_Android_Package_Name.Cancel_IBMPushNotification"/>
+            </intent-filter>
+        </receiver>
+
+
     </application>
 
 </manifest>

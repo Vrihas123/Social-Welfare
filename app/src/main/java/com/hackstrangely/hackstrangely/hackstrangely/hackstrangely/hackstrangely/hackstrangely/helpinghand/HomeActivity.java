@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_list_items.view.ItemActivity;
 import com.ibm.mobilefirstplatform.clientsdk.android.core.api.BMSClient;
 import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush;
 import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushException;
@@ -44,6 +45,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         };
 
+        Intent i = new Intent(HomeActivity.this, ItemActivity.class);
+        startActivity(i);
+        finish();
 
     }
 
@@ -53,8 +57,6 @@ public class HomeActivity extends AppCompatActivity {
      * Attempts to register the device with your push service on Bluemix.
      * If successful, the push client sdk begins listening to the notification listener.
      * Also includes the example option of UserID association with the registration for very targeted Push notifications.
-     *
-     * @param view the button pressed
      */
     public void registerDevice() {
 

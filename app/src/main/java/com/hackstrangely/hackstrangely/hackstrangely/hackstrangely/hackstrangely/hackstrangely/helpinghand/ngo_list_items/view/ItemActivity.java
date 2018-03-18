@@ -10,11 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
+import com.bumptech.glide.Glide;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.HomeActivity;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.R;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.helper.SharedPrefs;
@@ -34,6 +36,8 @@ public class ItemActivity extends AppCompatActivity
 
     @BindView(R.id.item_recycler)
     RecyclerView itemRecycler;
+    @BindView(R.id.item_img)
+    ImageView fundsImage;
 
     private SharedPrefs sharedPrefs;
     private ItemAdapter adapter;
@@ -70,6 +74,7 @@ public class ItemActivity extends AppCompatActivity
             }
         });
 
+        Glide.with(this).load("http://i.dailymail.co.uk/i/pix/2017/08/21/17/434D3F5100000578-4788990-UK_Equity_Income_funds_can_provide_an_attractive_level_of_income-a-4_1503331494355.jpg").into(fundsImage);
         itemPresenter = new ItemPresenterImpl(this,new RetrofitItemProvider());
         itemPresenter.requesItem(sharedPrefs.getAccessToken());
 
