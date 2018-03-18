@@ -6,12 +6,11 @@ package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangel
 
 public class NgoPaymentData {
 
-    int id,fund;
-    String name;
+int id;
+String name;
 
-    public NgoPaymentData(int id, int fund, String name) {
+    public NgoPaymentData(int id, String name) {
         this.id = id;
-        this.fund = fund;
         this.name = name;
     }
 
@@ -21,14 +20,6 @@ public class NgoPaymentData {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getFund() {
-        return fund;
-    }
-
-    public void setFund(int fund) {
-        this.fund = fund;
     }
 
     public String getName() {

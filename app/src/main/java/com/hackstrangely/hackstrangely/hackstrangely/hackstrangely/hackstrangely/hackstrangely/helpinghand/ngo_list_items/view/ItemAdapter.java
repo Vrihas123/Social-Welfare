@@ -55,6 +55,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
 
         final ItemData itemData1 = itemDataList.get(position);
         holder.itemName.setText(itemData1.getItem());
+        Glide.with(context).load("https://static.wixstatic.com/media/542f1c_3d732cf2362711b280a457d65fb0a669.gif").into(holder.itemImage);
         Glide.with(context).load(itemData1.getImage()).into(holder.itemImage);
         holder.itemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
