@@ -5,5 +5,5 @@ package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangel
  */
 
 public interface NgoEndPresenter {
-    void requestNgoDetails(String token,int itemId,int ngoId,int quantity,String details);
+    void requestNgoDetails(String token,int itemId,int ngoId,String quantity,String details);
 }

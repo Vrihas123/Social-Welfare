@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitNgoEndProvider implements NgoEndProvider {
 
     @Override
-    public void requestNgoEnd(String token, int itemId, int ngoId, int quantity, String details, final OnNgoDetailsRecieved onNgoDetailsRecieved) {
+    public void requestNgoEnd(String token, int itemId, int ngoId, String quantity, String details, final OnNgoDetailsRecieved onNgoDetailsRecieved) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().connectTimeout(10, TimeUnit.SECONDS)

@@ -3,6 +3,7 @@ package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangel
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
@@ -20,6 +22,7 @@ import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_list_items.presenter.ItemPresenter;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_list_items.presenter.ItemPresenterImpl;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_list_items.provider.RetrofitItemProvider;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_sub_categories.view.SubCategoryFragment;
 
 import java.util.List;
 
@@ -35,11 +38,13 @@ public class ItemActivity extends AppCompatActivity
     private SharedPrefs sharedPrefs;
     private ItemAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
+    private RelativeLayout relativeLayoutPayment;
+
 
     private ItemPresenter itemPresenter;
 
-    @BindView(R.id.progressBar_item)
-    ProgressBar progressBar;
+//    @BindView(R.id.progressBar_item)
+//    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,17 @@ public class ItemActivity extends AppCompatActivity
         adapter = new ItemAdapter(this);
         itemRecycler.setAdapter(adapter);
         itemRecycler.setNestedScrollingEnabled(false);
+        relativeLayoutPayment = (RelativeLayout) findViewById(R.id.layout_item_payment);
+        relativeLayoutPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //  sharedPrefs.setItem_id(itemData1.getId());
+                        getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container_body, new SubCategoryFragment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         itemPresenter = new ItemPresenterImpl(this,new RetrofitItemProvider());
         itemPresenter.requesItem(sharedPrefs.getAccessToken());
@@ -105,13 +121,13 @@ public class ItemActivity extends AppCompatActivity
 
     @Override
     public void showProgressBar(boolean show) {
-
-        if(show){
-            progressBar.setVisibility(View.VISIBLE);
-        }
-        else{
-            progressBar.setVisibility(View.GONE);
-        }
+//
+//        if(show){
+//            progressBar.setVisibility(View.VISIBLE);
+//        }
+//        else{
+//            progressBar.setVisibility(View.GONE);
+//        }
 
     }
 

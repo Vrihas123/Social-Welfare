@@ -1,6 +1,7 @@
 package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_list_items.view;
 
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +38,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
 
     }
 
-    public void setItemDataList(List<ItemData> itemData){
+    public void setItemDataList(List<ItemData> itemDataList){
         this.itemDataList = itemDataList;
     }
 
@@ -53,13 +54,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
         final ItemData itemData1 = itemDataList.get(position);
-        holder.itemName.setText(itemData1.getName());
+        holder.itemName.setText(itemData1.getItem());
         Glide.with(context).load(itemData1.getImage()).into(holder.itemImage);
         holder.itemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sharedPrefs.setItem_id(itemData1.getId());
-                ((ItemActivity)context).addFragment(new SubCategoryFragment(),"NGO's");
+                ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container_body, new SubCategoryFragment())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
@@ -74,7 +78,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
 
         public TextView itemName;
         public ImageView itemImage;
-        RelativeLayout itemLayout;
+        RelativeLayout itemLayout,payment_layout;
 
 
         public ViewHolder(View itemView) {
@@ -82,6 +86,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
             itemLayout = (RelativeLayout) itemView.findViewById(R.id.layout_item);
             itemName = (TextView) itemView.findViewById(R.id.item_name);
             itemImage = (ImageView) itemView.findViewById(R.id.item_img);
+            payment_layout = (RelativeLayout) itemView.findViewById(R.id.layout_item_payment);
         }
     }
 }

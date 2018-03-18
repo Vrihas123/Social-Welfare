@@ -19,7 +19,7 @@ public class NgoEndPresenterImpl implements NgoEndPresenter{
     }
 
     @Override
-    public void requestNgoDetails(String token, int itemId, int ngoId, int quantity, String details) {
+    public void requestNgoDetails(String token, int itemId, int ngoId, String quantity, String details) {
         ngoView.showProgressBar(true);
         ngoEndProvider.requestNgoEnd(token, itemId, ngoId, quantity, details, new OnNgoDetailsRecieved() {
             @Override

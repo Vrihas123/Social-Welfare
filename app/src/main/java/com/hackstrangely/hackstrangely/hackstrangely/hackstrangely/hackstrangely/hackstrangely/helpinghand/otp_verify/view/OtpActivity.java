@@ -81,7 +81,7 @@ public class OtpActivity extends AppCompatActivity implements OtpView{
 
     }
 //    public void resend(View v) {
-//        RegisterPresenter registerPresenter = new RegisterPresenterImpl(new RetrofitRegisterHelper(),new RegisterView() {
+//        PaymentPresenter registerPresenter = new PaymentPresenterImpl(new RetrofitPaymentHelper(),new RegisterView() {
 //            @Override
 //            public void showProgressBar(boolean show) {
 //                if (show) {
@@ -98,7 +98,7 @@ public class OtpActivity extends AppCompatActivity implements OtpView{
 //            }
 //
 //            @Override
-//            public void showRegisterStatus(RegisterDataResponse registerDataResponse) {
+//            public void showRegisterStatus(PaymentDataResponse registerDataResponse) {
 //
 //            }
 //        });

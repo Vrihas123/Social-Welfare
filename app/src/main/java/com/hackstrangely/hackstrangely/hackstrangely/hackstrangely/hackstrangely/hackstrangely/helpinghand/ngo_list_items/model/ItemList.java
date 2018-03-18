@@ -8,12 +8,12 @@ import java.util.List;
 
 public class ItemList {
 
-    private List<ItemData> data;
+    private List<ItemData> items;
     private boolean success;
     private String message;
 
     public List<ItemData> getData() {
-        return data;
+        return items;
     }
 
     public boolean isSuccess() {
@@ -24,9 +24,9 @@ public class ItemList {
         return message;
     }
 
-    public ItemList(List<ItemData> data, boolean success, String message) {
+    public ItemList(List<ItemData> items, boolean success, String message) {
 
-        this.data = data;
+        this.items = items;
         this.success = success;
         this.message = message;
     }

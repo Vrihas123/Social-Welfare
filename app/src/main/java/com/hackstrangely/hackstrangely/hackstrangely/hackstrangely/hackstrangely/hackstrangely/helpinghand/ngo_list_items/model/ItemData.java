@@ -5,17 +5,17 @@ package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangel
  */
 
 public class ItemData {
-    String name,image;
+    String item,image;
     int id;
 
-    public ItemData(String name, String image, int id) {
-        this.name = name;
+    public ItemData(String item, String image, int id) {
+        this.item = item;
         this.image = image;
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setItem(String item) {
+        this.item = item;
     }
 
     public void setImage(String image) {
@@ -26,9 +26,9 @@ public class ItemData {
         this.id = id;
     }
 
-    public String getName() {
+    public String getItem() {
 
-        return name;
+        return item;
     }
 
     public String getImage() {

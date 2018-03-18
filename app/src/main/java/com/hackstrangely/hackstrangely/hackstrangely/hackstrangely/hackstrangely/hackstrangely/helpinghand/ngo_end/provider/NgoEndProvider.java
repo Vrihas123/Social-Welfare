@@ -7,5 +7,5 @@ import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely
  */
 
 public interface NgoEndProvider {
-    void requestNgoEnd(String token, int itemId, int ngoId, int quantity, String details, OnNgoDetailsRecieved onNgoDetailsRecieved);
+    void requestNgoEnd(String token, int itemId, int ngoId, String quantity, String details, OnNgoDetailsRecieved onNgoDetailsRecieved);
 }

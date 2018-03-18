@@ -1,4 +1,4 @@
-package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_sub_categories.model;
+package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.payment_list_ngo.model;
 
 import java.util.List;
 
@@ -6,11 +6,11 @@ import java.util.List;
  * Created by samveg on 26/8/17.
  */
 
-public class SubCategoryList {
+public class NgoPaymentList {
 
     boolean success;
     String message;
-    private List<SubCategoryData> ngo;
+    private List<NgoPaymentData> ngo;
 
     public boolean isSuccess() {
         return success;
@@ -20,11 +20,11 @@ public class SubCategoryList {
         return message;
     }
 
-    public List<SubCategoryData> getGet_property() {
+    public List<NgoPaymentData> getGet_property() {
         return ngo;
     }
 
-    public SubCategoryList(boolean success, String message, List<SubCategoryData> ngo) {
+    public NgoPaymentList(boolean success, String message, List<NgoPaymentData> ngo) {
 
         this.success = success;
         this.message = message;

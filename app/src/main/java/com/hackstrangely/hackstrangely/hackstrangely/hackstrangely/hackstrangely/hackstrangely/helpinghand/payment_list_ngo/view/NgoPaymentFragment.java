@@ -1,4 +1,4 @@
-package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_sub_categories.view;
+package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.payment_list_ngo.view;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,13 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.R;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.helper.SharedPrefs;
-import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_sub_categories.model.SubCategoryData;
-import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_sub_categories.presenter.SubCategoryPresenter;
-import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_sub_categories.presenter.SubCategoryPresenterImpl;
-import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.ngo_sub_categories.provider.RetrofitSubCategoryProvider;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.payment_list_ngo.model.NgoPaymentData;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.payment_list_ngo.presenter.NgoPaymentPresenter;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.payment_list_ngo.presenter.NgoPaymentPresenterImpl;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand.payment_list_ngo.provider.RetrofitNgoPaymentProvider;
 
 import java.util.List;
 
@@ -27,12 +26,12 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link SubCategoryFragment.OnFragmentInteractionListener} interface
+ * {@link NgoPaymentFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link SubCategoryFragment#newInstance} factory method to
+ * Use the {@link NgoPaymentFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SubCategoryFragment extends Fragment implements SubCategoryView{
+public class NgoPaymentFragment extends Fragment implements NgoPaymentView {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -47,7 +46,7 @@ public class SubCategoryFragment extends Fragment implements SubCategoryView{
     @BindView(R.id.sub_category_recycler)
     RecyclerView subCategoryRecycler;
     LinearLayoutManager linearLayoutManager;
-    SubCategoriesAdapter adapter;
+    NgoPaymentAdapter adapter;
 
     @BindView(R.id.sub_category_progressBar)
     ProgressBar progressBar;
@@ -55,10 +54,10 @@ public class SubCategoryFragment extends Fragment implements SubCategoryView{
 //    @BindView(R.id.sub_category_toolbar)
 //    Toolbar subCategory_toolbar;
 
-    private SubCategoryPresenter subCategoryPresenter;
+    private NgoPaymentPresenter ngoPaymentPresenter;
     private SharedPrefs sharedPrefs;
 
-    public SubCategoryFragment() {
+    public NgoPaymentFragment() {
         // Required empty public constructor
     }
 
@@ -71,8 +70,8 @@ public class SubCategoryFragment extends Fragment implements SubCategoryView{
      * @return A new instance of fragment NgoPaymentFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SubCategoryFragment newInstance(String param1, String param2) {
-        SubCategoryFragment fragment = new SubCategoryFragment();
+    public static NgoPaymentFragment newInstance(String param1, String param2) {
+        NgoPaymentFragment fragment = new NgoPaymentFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -101,7 +100,7 @@ public class SubCategoryFragment extends Fragment implements SubCategoryView{
         subCategoryRecycler.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(getContext());
         subCategoryRecycler.setLayoutManager(linearLayoutManager);
-        adapter = new SubCategoriesAdapter(getContext());
+        adapter = new NgoPaymentAdapter(getContext());
         subCategoryRecycler.setAdapter(adapter);
         subCategoryRecycler.setNestedScrollingEnabled(false);
 
@@ -111,8 +110,8 @@ public class SubCategoryFragment extends Fragment implements SubCategoryView{
 //            ((HomeActivity) getContext()).getSupportActionBar().hide();
 //        }
 
-        subCategoryPresenter = new SubCategoryPresenterImpl(SubCategoryFragment.this,new RetrofitSubCategoryProvider());
-        subCategoryPresenter.requestSubCategory(sharedPrefs.getItemId(),sharedPrefs.getAccessToken());
+        ngoPaymentPresenter = new NgoPaymentPresenterImpl(NgoPaymentFragment.this,new RetrofitNgoPaymentProvider());
+        ngoPaymentPresenter.requestNgoPayment(sharedPrefs.getAccessToken());
         return view;
     }
 
@@ -150,7 +149,7 @@ public class SubCategoryFragment extends Fragment implements SubCategoryView{
     }
 
     @Override
-    public void setSubCategoryData(List<SubCategoryData> subCategoryList) {
+    public void setSubCategoryData(List<NgoPaymentData> subCategoryList) {
         adapter.setSubCategoryList(subCategoryList);
         adapter.notifyDataSetChanged();
     }

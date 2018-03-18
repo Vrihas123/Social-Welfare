@@ -5,6 +5,7 @@ import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -13,6 +14,6 @@ import retrofit2.http.Query;
 //item id,ngo id, access_token,donation details,donation quantity
     //success,msg,ngo details
 public interface RequestNgoEndApi {
-    @GET(Urls.REQUEST_NGO_DETAILS)
-    Call<NgoEndList> getItemData(@Query("token") String token, @Query("itemId") int itemId, @Query("ngoId") int ngoId, @Query("quantity") int quantity, @Query("details") String details);
+    @POST(Urls.REQUEST_NGO_DETAILS)
+    Call<NgoEndList> getItemData(@Query("token") String token, @Query("itemId") int itemId, @Query("ngoId") int ngoId, @Query("quantity") String quantity, @Query("details") String details);
 }

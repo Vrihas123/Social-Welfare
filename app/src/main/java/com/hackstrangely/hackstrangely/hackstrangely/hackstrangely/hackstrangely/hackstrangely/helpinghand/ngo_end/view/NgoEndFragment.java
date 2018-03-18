@@ -40,6 +40,7 @@ public class NgoEndFragment extends Fragment implements NgoView {
     private SharedPrefs sharedPrefs;
     private TextView ngoName,ngoDetails;
     private String ddetail,dquantity;
+    private int d;
     private Button btn_submit;
     private EditText donationQuantity,donationDetails;
     private OnFragmentInteractionListener mListener;
@@ -92,18 +93,19 @@ public class NgoEndFragment extends Fragment implements NgoView {
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar_end);
         ddetail = donationDetails.getText().toString().trim();
         dquantity = donationQuantity.getText().toString().trim();
+
         ngoName.setText(sharedPrefs.getNgoName());
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (dquantity.isEmpty()){
-                    Toast.makeText(getContext(),"Please fill the quantity field",Toast.LENGTH_SHORT).show();
-                }else if ((ddetail.isEmpty())){
-                    Toast.makeText(getContext(),"Please fill the details field",Toast.LENGTH_SHORT).show();
-                }else{
+//                if (dquantity.isEmpty()){
+//                    Toast.makeText(getContext(),"Please fill the quantity field",Toast.LENGTH_SHORT).show();
+//                }else if ((ddetail.isEmpty())){
+//                    Toast.makeText(getContext(),"Please fill the details field",Toast.LENGTH_SHORT).show();
+//               }else{
                     ngoEndPresenter = new NgoEndPresenterImpl(NgoEndFragment.this,new RetrofitNgoEndProvider());
-                    ngoEndPresenter.requestNgoDetails(sharedPrefs.getAccessToken(),sharedPrefs.getItemId(),sharedPrefs.getNgoId(),Integer.parseInt(dquantity),ddetail);
-                }
+                    ngoEndPresenter.requestNgoDetails(sharedPrefs.getAccessToken(),sharedPrefs.getItemId(),sharedPrefs.getNgoId(),dquantity,ddetail);
+//              }
             }
         });
         return view;
@@ -129,7 +131,7 @@ public class NgoEndFragment extends Fragment implements NgoView {
 
     @Override
     public void setData(NgoEndList ngoEndList) {
-
+        Toast.makeText(getContext(),"Successfully details sent",Toast.LENGTH_SHORT).show();
     }
 
     @Override
