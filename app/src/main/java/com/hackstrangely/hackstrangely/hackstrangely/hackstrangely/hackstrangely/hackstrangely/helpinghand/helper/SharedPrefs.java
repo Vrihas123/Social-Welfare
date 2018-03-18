@@ -27,6 +27,9 @@ public class SharedPrefs {
     private static final String KEY_LOGIN_TYPE = "loginType";
     private static final String KEY_FCM = "fcm";
     private static final String KEY_ACCESS_TOKEN = "access_token";
+    private static final String KEY_GENDER="gender";
+    private static final String KEY_AGE="age";
+    private static final String KEY_SYMPTOMS="symptoms";
     private static final int KEY_VERSION=1;
     // LogCat tag
     private static String TAG = "Shared Preference";
@@ -182,4 +185,29 @@ public class SharedPrefs {
     public String getAadhar(){
         return pref.getString(KEY_AADHAR,"your aadhar");
     }
+
+    public void setGender(String gender){
+        editor.putString(KEY_GENDER,gender);
+        editor.commit();
+    }
+    public String getGender(){
+        return pref.getString(KEY_GENDER,"User's Gender");
+    }
+
+    public void setAge(String age){
+        editor.putString(KEY_AGE,age);
+        editor.commit();
+    }
+    public String getAge(){
+        return pref.getString(KEY_AGE,"User's Age");
+    }
+
+    public void setSymptoms(String symptoms){
+        editor.putString(KEY_SYMPTOMS,symptoms);
+        editor.commit();
+    }
+    public String getSymptoms(){
+        return pref.getString(KEY_SYMPTOMS,"User's Symptoms");
+    }
+
 }

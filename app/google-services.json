@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "775950855685",
+    "firebase_url": "https://social-welfare.firebaseio.com",
+    "project_id": "social-welfare",
+    "storage_bucket": "social-welfare.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775950855685:android:d4704d452b559f4a",
+        "android_client_info": {
+          "package_name": "com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.helpinghand"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775950855685-vplp2pcuju4g9s9ol6utde031qps6b5c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS9HDKyYm2OszVUd4K0C-Biv6vxJ_AbqI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
