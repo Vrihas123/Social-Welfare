@@ -15,5 +15,8 @@ public class Urls {
     public static final String REQUEST_LOGIN ="user/login/";
     public static final String REQUEST_REGISTER ="user/register/";
     public static final String REQUEST_VERIFY="user/verify/";
+    public static final String REQUEST_NGO="ngo/api";
+    public static final String REQUEST_PAYMENT="donation/pay";
+
 
 }

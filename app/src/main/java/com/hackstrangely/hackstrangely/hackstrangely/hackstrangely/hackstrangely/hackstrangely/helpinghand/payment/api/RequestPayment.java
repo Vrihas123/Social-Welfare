@@ -16,7 +16,7 @@ import retrofit2.http.POST;
 public interface RequestPayment {
 
     @FormUrlEncoded
-    @POST(Urls.REQUEST_REGISTER)
-    Call<PaymentDataResponse> getJSON(@Field("firstname") String name, @Field("mobile") String mobile, @Field("email") String email, @Field("amount") String amount, @Field("token") String access_token);
+    @POST(Urls.REQUEST_PAYMENT)
+    Call<PaymentDataResponse> getJSON(@Field("firstname") String name, @Field("phone") String mobile, @Field("email") String email, @Field("amount") String amount, @Field("token") String access_token);
 
 }

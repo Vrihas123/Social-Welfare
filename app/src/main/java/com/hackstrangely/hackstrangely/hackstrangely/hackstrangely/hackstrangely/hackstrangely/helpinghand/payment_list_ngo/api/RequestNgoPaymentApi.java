@@ -15,7 +15,7 @@ import retrofit2.http.Query;
 
 public interface RequestNgoPaymentApi {
 
-    @GET(Urls.REQUEST_SUB_CATEGORY)
+    @GET(Urls.REQUEST_NGO)
     Call<NgoPaymentList> getNgoPaymentData(@Query("token") String access_token);
 
 }
